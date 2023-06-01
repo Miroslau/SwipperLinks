@@ -7,6 +7,7 @@ import {links} from '../../mock/links';
 const TITLE: string = 'Swipper Links';
 
 const MainScreen: FC = () => {
+  // method for go by url
   const goToUrl = (url: string): void => {
     Linking.canOpenURL(url).then(supported => {
       if (supported) {

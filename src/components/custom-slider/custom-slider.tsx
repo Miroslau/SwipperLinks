@@ -9,13 +9,18 @@ interface ICustomSliderProps<T> {
 }
 
 const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
+  // reference for position on scroll
   const scrollX = useRef(new Animated.Value(0)).current;
+
+  // index for position
   const [index, setIndex] = useState<number | null>(0);
 
+  // method which render an item
   const renderLinkItem = ({item}: any) => (
     <SliderItem item={item?.link} handleClick={handleClick} />
   );
 
+  // method which allows use scroll
   const handleOnScroll = (event: React.SyntheticEvent) => {
     Animated.event(
       [
@@ -33,6 +38,7 @@ const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
     )(event);
   };
 
+  // change Viewable items
   const handleONViewableItemsChanged = useRef(({viewableItems}: any) => {
     setIndex(viewableItems[0].index);
   }).current;

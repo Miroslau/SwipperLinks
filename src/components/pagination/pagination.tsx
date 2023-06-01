@@ -14,6 +14,7 @@ const Pagination: FC<IPaginationProps<any>> = ({data, scrollX}) => {
   return (
     <View style={PaginationStyled.container}>
       {data.map((_, idx) => {
+        // variable which store range
         const inputRange = [(idx - 1) * width, idx * width, (idx + 1) * width];
         const dotWidth = scrollX.interpolate({
           inputRange,
