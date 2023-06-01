@@ -5,13 +5,16 @@ import Pagination from '../pagination/pagination';
 
 interface ICustomSliderProps<T> {
   items: T[];
+  handleClick: (arg?: any) => void;
 }
 
-const CustomSlider: FC<ICustomSliderProps<any>> = ({items}) => {
+const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [index, setIndex] = useState<number | null>(0);
 
-  const renderLinkItem = ({item}: any) => <SliderItem item={item?.link} />;
+  const renderLinkItem = ({item}: any) => (
+    <SliderItem item={item?.link} handleClick={handleClick} />
+  );
 
   const handleOnScroll = (event: React.SyntheticEvent) => {
     Animated.event(

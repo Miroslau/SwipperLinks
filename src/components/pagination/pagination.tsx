@@ -5,12 +5,12 @@ import {PaginationStyled} from './pagination.styled';
 interface IPaginationProps<A> {
   data: A[];
   scrollX: Animated.Value;
-  index: number | null;
+  index?: number | null;
 }
 
 const {width} = Dimensions.get('screen');
 
-const Pagination: FC<IPaginationProps<any>> = ({data, scrollX, index}) => {
+const Pagination: FC<IPaginationProps<any>> = ({data, scrollX}) => {
   return (
     <View style={PaginationStyled.container}>
       {data.map((_, idx) => {

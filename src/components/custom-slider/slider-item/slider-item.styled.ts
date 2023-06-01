@@ -10,8 +10,11 @@ export const SliderItemStyled = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
-    flex: 0.4,
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'red',
+    borderWidth: 1,
   },
   title: {
     fontSize: normalizeSize(24),
