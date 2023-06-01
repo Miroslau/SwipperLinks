@@ -42,7 +42,10 @@ const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
   }).current;
 
   return (
-    <View>
+    <View
+      style={{
+        height: '85%',
+      }}>
       <FlatList
         data={items}
         renderItem={renderLinkItem}

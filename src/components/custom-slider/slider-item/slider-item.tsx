@@ -13,6 +13,8 @@ const SliderItem: FC<SliderItemProps<any>> = ({item, handleClick}) => {
       <View style={SliderItemStyled.content}>
         <Text
           style={SliderItemStyled.title}
+          ellipsizeMode="head"
+          numberOfLines={2}
           onPress={handleClick?.bind(this, item)}>
           {item}
         </Text>

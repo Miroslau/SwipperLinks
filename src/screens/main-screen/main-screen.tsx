@@ -19,7 +19,7 @@ const MainScreen: FC = () => {
 
   return (
     <SafeAreaView>
-      {/*<Title title={TITLE} />*/}
+      <Title title={TITLE} />
       <CustomSlider items={links} handleClick={goToUrl} />
     </SafeAreaView>
   );
