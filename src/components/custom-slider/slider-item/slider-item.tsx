@@ -1,24 +1,24 @@
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import {SliderItemStyled} from './slider-item.styled';
+import {WebView} from 'react-native-webview';
 
 interface SliderItemProps<T> {
   item: T;
-  handleClick?: (args?: any) => void;
 }
 
-const SliderItem: FC<SliderItemProps<any>> = ({item, handleClick}) => {
+const SliderItem: FC<SliderItemProps<any>> = ({item}) => {
   return (
     <View style={SliderItemStyled.container}>
-      <View style={SliderItemStyled.content}>
-        <Text
-          style={SliderItemStyled.title}
-          ellipsizeMode="head"
-          numberOfLines={2}
-          onPress={handleClick?.bind(this, item)}>
-          {item}
-        </Text>
-      </View>
+      <WebView
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+        originWhitelist={['*']}
+        scalesPageToFit={true}
+        source={{
+          uri: item,
+        }}
+      />
     </View>
   );
 };

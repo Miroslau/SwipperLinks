@@ -5,10 +5,9 @@ import Pagination from '../pagination/pagination';
 
 interface ICustomSliderProps<T> {
   items: T[];
-  handleClick: (arg?: any) => void;
 }
 
-const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
+const CustomSlider: FC<ICustomSliderProps<any>> = ({items}) => {
   // reference for position on scroll
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -16,9 +15,7 @@ const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
   const [index, setIndex] = useState<number | null>(0);
 
   // method which render an item
-  const renderLinkItem = ({item}: any) => (
-    <SliderItem item={item?.link} handleClick={handleClick} />
-  );
+  const renderLinkItem = ({item}: any) => <SliderItem item={item?.link} />;
 
   // method which allows use scroll
   const handleOnScroll = (event: React.SyntheticEvent) => {
@@ -55,7 +52,8 @@ const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
       <FlatList
         data={items}
         renderItem={renderLinkItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => `${item.id} - ${index}`}
+        bounces={false}
         horizontal
         pagingEnabled
         snapToAlignment="center"
@@ -63,6 +61,7 @@ const CustomSlider: FC<ICustomSliderProps<any>> = ({items, handleClick}) => {
         onScroll={handleOnScroll}
         onViewableItemsChanged={handleONViewableItemsChanged}
         viewabilityConfig={viabilityConfig}
+        overScrollMode="never"
       />
       <Pagination data={items} scrollX={scrollX} index={index} />
     </View>

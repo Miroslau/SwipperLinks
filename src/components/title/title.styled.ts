@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {normalizeSize} from '../../util/normolizeSize';
 
 export const TitleStyled = StyleSheet.create({
   container: {
@@ -8,7 +9,7 @@ export const TitleStyled = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: normalizeSize(25),
     color: 'white',
     fontWeight: 'bold',
   },
